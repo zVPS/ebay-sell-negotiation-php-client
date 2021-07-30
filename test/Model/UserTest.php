@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace Ebay\Sell\Test\Model;
+namespace Ebay\Sell\Negotiation\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description This complex type identifies an eBay user&lt;!-- by either their &lt;b&gt;maskedUsername&lt;/b&gt; or their full &lt;b&gt;username&lt;/b&gt;--&gt;.
- * @package     Ebay\Sell
+ * @package     Ebay\Sell\Negotiation
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */

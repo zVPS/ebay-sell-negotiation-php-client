@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace Ebay\Sell\Test\Model;
+namespace Ebay\Sell\Negotiation\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description A listing that is eligible for a seller-initiated offer to a buyer.  &lt;br&gt;&lt;br&gt;Listings are identified by a &lt;b&gt;listingId&lt;/b&gt; value that is generated and assigned by eBay when a seller lists an item using the Trading API.  &lt;br&gt;&lt;br&gt;&lt;b&gt;Note:&lt;/b&gt; The Negotiation API does not currently support listings that are managed with the Inventory API.
- * @package     Ebay\Sell
+ * @package     Ebay\Sell\Negotiation
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */

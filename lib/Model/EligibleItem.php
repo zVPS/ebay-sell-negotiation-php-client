@@ -1,11 +1,11 @@
 <?php
 /**
- * User
+ * EligibleItem
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Negotiation\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Negotiation\ObjectSerializer;
 
 /**
- * User Class Doc Comment
+ * EligibleItem Class Doc Comment
  *
  * @category Class
- * @description This complex type identifies an eBay user&lt;!-- by either their &lt;b&gt;maskedUsername&lt;/b&gt; or their full &lt;b&gt;username&lt;/b&gt;--&gt;.
- * @package  Ebay\Sell
+ * @description A listing that is eligible for a seller-initiated offer to a buyer.  &lt;br&gt;&lt;br&gt;Listings are identified by a &lt;b&gt;listingId&lt;/b&gt; value that is generated and assigned by eBay when a seller lists an item using the Trading API.  &lt;br&gt;&lt;br&gt;&lt;b&gt;Note:&lt;/b&gt; The Negotiation API does not currently support listings that are managed with the Inventory API.
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class User implements ModelInterface, ArrayAccess, \JsonSerializable
+class EligibleItem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'User';
+    protected static $openAPIModelName = 'EligibleItem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,7 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'masked_username' => 'string'
+        'listing_id' => 'string'
     ];
 
     /**
@@ -71,7 +71,7 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'masked_username' => null
+        'listing_id' => null
     ];
 
     /**
@@ -101,7 +101,7 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'masked_username' => 'maskedUsername'
+        'listing_id' => 'listingId'
     ];
 
     /**
@@ -110,7 +110,7 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'masked_username' => 'setMaskedUsername'
+        'listing_id' => 'setListingId'
     ];
 
     /**
@@ -119,7 +119,7 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'masked_username' => 'getMaskedUsername'
+        'listing_id' => 'getListingId'
     ];
 
     /**
@@ -179,7 +179,7 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['masked_username'] = isset($data['masked_username']) ? $data['masked_username'] : null;
+        $this->container['listing_id'] = $data['listing_id'] ?? null;
     }
 
     /**
@@ -207,25 +207,25 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets masked_username
+     * Gets listing_id
      *
      * @return string|null
      */
-    public function getMaskedUsername()
+    public function getListingId()
     {
-        return $this->container['masked_username'];
+        return $this->container['listing_id'];
     }
 
     /**
-     * Sets masked_username
+     * Sets listing_id
      *
-     * @param string|null $masked_username The masked user name is a user name that has certain characters hidden for privacy of the user.
+     * @param string|null $listing_id The unique eBay-assigned ID for an eBay listing. A listingId is assigned by eBay when a seller creates a listing with the Trading API.
      *
      * @return self
      */
-    public function setMaskedUsername($masked_username)
+    public function setListingId($listing_id)
     {
-        $this->container['masked_username'] = $masked_username;
+        $this->container['listing_id'] = $listing_id;
 
         return $this;
     }
@@ -250,7 +250,7 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

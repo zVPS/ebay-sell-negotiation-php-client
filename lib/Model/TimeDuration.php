@@ -5,7 +5,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,14 +29,14 @@
 namespace Ebay\Sell\Negotiation\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Negotiation\ObjectSerializer;
 
 /**
  * TimeDuration Class Doc Comment
  *
  * @category Class
  * @description A complex type that specifies a period of time using a specified time-measurement unit.
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
@@ -45,7 +45,7 @@ use \Ebay\Sell\ObjectSerializer;
  */
 class TimeDuration implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -184,8 +184,8 @@ class TimeDuration implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['unit'] = isset($data['unit']) ? $data['unit'] : null;
-        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['unit'] = $data['unit'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -280,7 +280,7 @@ class TimeDuration implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

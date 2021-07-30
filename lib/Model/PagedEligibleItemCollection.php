@@ -1,11 +1,11 @@
 <?php
 /**
- * OfferedItem
+ * PagedEligibleItemCollection
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Negotiation\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Negotiation\ObjectSerializer;
 
 /**
- * OfferedItem Class Doc Comment
+ * PagedEligibleItemCollection Class Doc Comment
  *
  * @category Class
- * @description A complex type that defines the offer being made to an \&quot;interested\&quot; buyer.
- * @package  Ebay\Sell
+ * @description This complex type defines a collection of listings that are eligible for an offer to a buyer.
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class OfferedItem implements ModelInterface, ArrayAccess, \JsonSerializable
+class PagedEligibleItemCollection implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'OfferedItem';
+    protected static $openAPIModelName = 'PagedEligibleItemCollection';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,10 +60,13 @@ class OfferedItem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'discount_percentage' => 'string',
-        'listing_id' => 'string',
-        'price' => '\Ebay\Sell\Negotiation\Model\Amount',
-        'quantity' => 'int'
+        'eligible_items' => '\Ebay\Sell\Negotiation\Model\EligibleItem[]',
+        'href' => 'string',
+        'limit' => 'int',
+        'next' => 'string',
+        'offset' => 'int',
+        'prev' => 'string',
+        'total' => 'int'
     ];
 
     /**
@@ -74,10 +77,13 @@ class OfferedItem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'discount_percentage' => null,
-        'listing_id' => null,
-        'price' => null,
-        'quantity' => null
+        'eligible_items' => null,
+        'href' => null,
+        'limit' => null,
+        'next' => null,
+        'offset' => null,
+        'prev' => null,
+        'total' => null
     ];
 
     /**
@@ -107,10 +113,13 @@ class OfferedItem implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'discount_percentage' => 'discountPercentage',
-        'listing_id' => 'listingId',
-        'price' => 'price',
-        'quantity' => 'quantity'
+        'eligible_items' => 'eligibleItems',
+        'href' => 'href',
+        'limit' => 'limit',
+        'next' => 'next',
+        'offset' => 'offset',
+        'prev' => 'prev',
+        'total' => 'total'
     ];
 
     /**
@@ -119,10 +128,13 @@ class OfferedItem implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'discount_percentage' => 'setDiscountPercentage',
-        'listing_id' => 'setListingId',
-        'price' => 'setPrice',
-        'quantity' => 'setQuantity'
+        'eligible_items' => 'setEligibleItems',
+        'href' => 'setHref',
+        'limit' => 'setLimit',
+        'next' => 'setNext',
+        'offset' => 'setOffset',
+        'prev' => 'setPrev',
+        'total' => 'setTotal'
     ];
 
     /**
@@ -131,10 +143,13 @@ class OfferedItem implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'discount_percentage' => 'getDiscountPercentage',
-        'listing_id' => 'getListingId',
-        'price' => 'getPrice',
-        'quantity' => 'getQuantity'
+        'eligible_items' => 'getEligibleItems',
+        'href' => 'getHref',
+        'limit' => 'getLimit',
+        'next' => 'getNext',
+        'offset' => 'getOffset',
+        'prev' => 'getPrev',
+        'total' => 'getTotal'
     ];
 
     /**
@@ -194,10 +209,13 @@ class OfferedItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['discount_percentage'] = isset($data['discount_percentage']) ? $data['discount_percentage'] : null;
-        $this->container['listing_id'] = isset($data['listing_id']) ? $data['listing_id'] : null;
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
-        $this->container['quantity'] = isset($data['quantity']) ? $data['quantity'] : null;
+        $this->container['eligible_items'] = $data['eligible_items'] ?? null;
+        $this->container['href'] = $data['href'] ?? null;
+        $this->container['limit'] = $data['limit'] ?? null;
+        $this->container['next'] = $data['next'] ?? null;
+        $this->container['offset'] = $data['offset'] ?? null;
+        $this->container['prev'] = $data['prev'] ?? null;
+        $this->container['total'] = $data['total'] ?? null;
     }
 
     /**
@@ -225,97 +243,169 @@ class OfferedItem implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets discount_percentage
+     * Gets eligible_items
+     *
+     * @return \Ebay\Sell\Negotiation\Model\EligibleItem[]|null
+     */
+    public function getEligibleItems()
+    {
+        return $this->container['eligible_items'];
+    }
+
+    /**
+     * Sets eligible_items
+     *
+     * @param \Ebay\Sell\Negotiation\Model\EligibleItem[]|null $eligible_items A list of items that are eligible for a seller-initiated offer to a buyer. Each element in the list contains the listing ID of a listed item. These IDs represent the listings for which buyers have shown an interest.
+     *
+     * @return self
+     */
+    public function setEligibleItems($eligible_items)
+    {
+        $this->container['eligible_items'] = $eligible_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets href
      *
      * @return string|null
      */
-    public function getDiscountPercentage()
+    public function getHref()
     {
-        return $this->container['discount_percentage'];
+        return $this->container['href'];
     }
 
     /**
-     * Sets discount_percentage
+     * Sets href
      *
-     * @param string|null $discount_percentage This value denotes the percentage that the listing in the offer will be discounted from its original listed price. The seller can specify either the exact price of the discounted items with the price field or they can use this field to specify the percentage that the listing will be discounted, but not both. Minimum: 5 Required if you do not specify a price value.
+     * @param string|null $href The URI of the current page of results from the result set.
      *
      * @return self
      */
-    public function setDiscountPercentage($discount_percentage)
+    public function setHref($href)
     {
-        $this->container['discount_percentage'] = $discount_percentage;
+        $this->container['href'] = $href;
 
         return $this;
     }
 
     /**
-     * Gets listing_id
-     *
-     * @return string|null
-     */
-    public function getListingId()
-    {
-        return $this->container['listing_id'];
-    }
-
-    /**
-     * Sets listing_id
-     *
-     * @param string|null $listing_id This value is a unique eBay-assigned ID that identifies the listing to which the offer pertains. A listingId value is generated by eBay when you list an item with the Trading API.
-     *
-     * @return self
-     */
-    public function setListingId($listing_id)
-    {
-        $this->container['listing_id'] = $listing_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets price
-     *
-     * @return \Ebay\Sell\Negotiation\Model\Amount|null
-     */
-    public function getPrice()
-    {
-        return $this->container['price'];
-    }
-
-    /**
-     * Sets price
-     *
-     * @param \Ebay\Sell\Negotiation\Model\Amount|null $price price
-     *
-     * @return self
-     */
-    public function setPrice($price)
-    {
-        $this->container['price'] = $price;
-
-        return $this;
-    }
-
-    /**
-     * Gets quantity
+     * Gets limit
      *
      * @return int|null
      */
-    public function getQuantity()
+    public function getLimit()
     {
-        return $this->container['quantity'];
+        return $this->container['limit'];
     }
 
     /**
-     * Sets quantity
+     * Sets limit
      *
-     * @param int|null $quantity This integer value indicates the number of items in the eBay listing for which the offer is being made. The offer being made by the seller is an &quot;all or nothing&quot; offer, meaning the buyer must purchase the indicated quantity of items in order to receive the discount on the transaction. Default: 1
+     * @param int|null $limit The number of items returned on a single page from the result set. This value can be set in the request with the limit query parameter.
      *
      * @return self
      */
-    public function setQuantity($quantity)
+    public function setLimit($limit)
     {
-        $this->container['quantity'] = $quantity;
+        $this->container['limit'] = $limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets next
+     *
+     * @return string|null
+     */
+    public function getNext()
+    {
+        return $this->container['next'];
+    }
+
+    /**
+     * Sets next
+     *
+     * @param string|null $next The URI for the following page of results. This value is returned only if there is an additional page of results to display from the result set. Max length: 2048
+     *
+     * @return self
+     */
+    public function setNext($next)
+    {
+        $this->container['next'] = $next;
+
+        return $this;
+    }
+
+    /**
+     * Gets offset
+     *
+     * @return int|null
+     */
+    public function getOffset()
+    {
+        return $this->container['offset'];
+    }
+
+    /**
+     * Sets offset
+     *
+     * @param int|null $offset The number of results skipped in the result set before listing the first returned result. This value can be set in the request with the offset query parameter. Note: The items in a paginated result set use a zero-based list where the first item in the list has an offset of 0.
+     *
+     * @return self
+     */
+    public function setOffset($offset)
+    {
+        $this->container['offset'] = $offset;
+
+        return $this;
+    }
+
+    /**
+     * Gets prev
+     *
+     * @return string|null
+     */
+    public function getPrev()
+    {
+        return $this->container['prev'];
+    }
+
+    /**
+     * Sets prev
+     *
+     * @param string|null $prev The URI for the preceding page of results. This value is returned only if there is a previous page of results to display from the result set. Max length: 2048
+     *
+     * @return self
+     */
+    public function setPrev($prev)
+    {
+        $this->container['prev'] = $prev;
+
+        return $this;
+    }
+
+    /**
+     * Gets total
+     *
+     * @return int|null
+     */
+    public function getTotal()
+    {
+        return $this->container['total'];
+    }
+
+    /**
+     * Sets total
+     *
+     * @param int|null $total The total number of items retrieved in the result set. If no items match the search criteria, the server returns the HTTP status code 204 No Content.
+     *
+     * @return self
+     */
+    public function setTotal($total)
+    {
+        $this->container['total'] = $total;
 
         return $this;
     }
@@ -340,7 +430,7 @@ class OfferedItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

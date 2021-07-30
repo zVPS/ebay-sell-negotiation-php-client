@@ -1,11 +1,11 @@
 <?php
 /**
- * EligibleItem
+ * SendOfferToInterestedBuyersCollectionResponse
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Negotiation\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Negotiation\ObjectSerializer;
 
 /**
- * EligibleItem Class Doc Comment
+ * SendOfferToInterestedBuyersCollectionResponse Class Doc Comment
  *
  * @category Class
- * @description A listing that is eligible for a seller-initiated offer to a buyer.  &lt;br&gt;&lt;br&gt;Listings are identified by a &lt;b&gt;listingId&lt;/b&gt; value that is generated and assigned by eBay when a seller lists an item using the Trading API.  &lt;br&gt;&lt;br&gt;&lt;b&gt;Note:&lt;/b&gt; The Negotiation API does not currently support listings that are managed with the Inventory API.
- * @package  Ebay\Sell
+ * @description The response object returned from a &lt;b&gt;SendOfferToInterestedBuyers&lt;/b&gt; request.
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class EligibleItem implements ModelInterface, ArrayAccess, \JsonSerializable
+class SendOfferToInterestedBuyersCollectionResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'EligibleItem';
+    protected static $openAPIModelName = 'SendOfferToInterestedBuyersCollectionResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,7 @@ class EligibleItem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'listing_id' => 'string'
+        'offers' => '\Ebay\Sell\Negotiation\Model\Offer[]'
     ];
 
     /**
@@ -71,7 +71,7 @@ class EligibleItem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'listing_id' => null
+        'offers' => null
     ];
 
     /**
@@ -101,7 +101,7 @@ class EligibleItem implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'listing_id' => 'listingId'
+        'offers' => 'offers'
     ];
 
     /**
@@ -110,7 +110,7 @@ class EligibleItem implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'listing_id' => 'setListingId'
+        'offers' => 'setOffers'
     ];
 
     /**
@@ -119,7 +119,7 @@ class EligibleItem implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'listing_id' => 'getListingId'
+        'offers' => 'getOffers'
     ];
 
     /**
@@ -179,7 +179,7 @@ class EligibleItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['listing_id'] = isset($data['listing_id']) ? $data['listing_id'] : null;
+        $this->container['offers'] = $data['offers'] ?? null;
     }
 
     /**
@@ -207,25 +207,25 @@ class EligibleItem implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets listing_id
+     * Gets offers
      *
-     * @return string|null
+     * @return \Ebay\Sell\Negotiation\Model\Offer[]|null
      */
-    public function getListingId()
+    public function getOffers()
     {
-        return $this->container['listing_id'];
+        return $this->container['offers'];
     }
 
     /**
-     * Sets listing_id
+     * Sets offers
      *
-     * @param string|null $listing_id The unique eBay-assigned ID for an eBay listing. A listingId is assigned by eBay when a seller creates a listing with the Trading API.
+     * @param \Ebay\Sell\Negotiation\Model\Offer[]|null $offers The offers container returns a list of the offers sent to buyers who have shown an interest in listings included in the offer.
      *
      * @return self
      */
-    public function setListingId($listing_id)
+    public function setOffers($offers)
     {
-        $this->container['listing_id'] = $listing_id;
+        $this->container['offers'] = $offers;
 
         return $this;
     }
@@ -250,7 +250,7 @@ class EligibleItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

@@ -1,11 +1,11 @@
 <?php
 /**
- * PagedEligibleItemCollection
+ * Amount
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Negotiation\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Negotiation\ObjectSerializer;
 
 /**
- * PagedEligibleItemCollection Class Doc Comment
+ * Amount Class Doc Comment
  *
  * @category Class
- * @description This complex type defines a collection of listings that are eligible for an offer to a buyer.
- * @package  Ebay\Sell
+ * @description A complex type that describes the value of a monetary amount as represented by a global currency.
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PagedEligibleItemCollection implements ModelInterface, ArrayAccess, \JsonSerializable
+class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PagedEligibleItemCollection';
+    protected static $openAPIModelName = 'Amount';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,13 +60,8 @@ class PagedEligibleItemCollection implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'eligible_items' => '\Ebay\Sell\Negotiation\Model\EligibleItem[]',
-        'href' => 'string',
-        'limit' => 'int',
-        'next' => 'string',
-        'offset' => 'int',
-        'prev' => 'string',
-        'total' => 'int'
+        'currency' => 'string',
+        'value' => 'string'
     ];
 
     /**
@@ -77,13 +72,8 @@ class PagedEligibleItemCollection implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'eligible_items' => null,
-        'href' => null,
-        'limit' => null,
-        'next' => null,
-        'offset' => null,
-        'prev' => null,
-        'total' => null
+        'currency' => null,
+        'value' => null
     ];
 
     /**
@@ -113,13 +103,8 @@ class PagedEligibleItemCollection implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'eligible_items' => 'eligibleItems',
-        'href' => 'href',
-        'limit' => 'limit',
-        'next' => 'next',
-        'offset' => 'offset',
-        'prev' => 'prev',
-        'total' => 'total'
+        'currency' => 'currency',
+        'value' => 'value'
     ];
 
     /**
@@ -128,13 +113,8 @@ class PagedEligibleItemCollection implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'eligible_items' => 'setEligibleItems',
-        'href' => 'setHref',
-        'limit' => 'setLimit',
-        'next' => 'setNext',
-        'offset' => 'setOffset',
-        'prev' => 'setPrev',
-        'total' => 'setTotal'
+        'currency' => 'setCurrency',
+        'value' => 'setValue'
     ];
 
     /**
@@ -143,13 +123,8 @@ class PagedEligibleItemCollection implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'eligible_items' => 'getEligibleItems',
-        'href' => 'getHref',
-        'limit' => 'getLimit',
-        'next' => 'getNext',
-        'offset' => 'getOffset',
-        'prev' => 'getPrev',
-        'total' => 'getTotal'
+        'currency' => 'getCurrency',
+        'value' => 'getValue'
     ];
 
     /**
@@ -209,13 +184,8 @@ class PagedEligibleItemCollection implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['eligible_items'] = isset($data['eligible_items']) ? $data['eligible_items'] : null;
-        $this->container['href'] = isset($data['href']) ? $data['href'] : null;
-        $this->container['limit'] = isset($data['limit']) ? $data['limit'] : null;
-        $this->container['next'] = isset($data['next']) ? $data['next'] : null;
-        $this->container['offset'] = isset($data['offset']) ? $data['offset'] : null;
-        $this->container['prev'] = isset($data['prev']) ? $data['prev'] : null;
-        $this->container['total'] = isset($data['total']) ? $data['total'] : null;
+        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
     }
 
     /**
@@ -243,169 +213,49 @@ class PagedEligibleItemCollection implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets eligible_items
-     *
-     * @return \Ebay\Sell\Negotiation\Model\EligibleItem[]|null
-     */
-    public function getEligibleItems()
-    {
-        return $this->container['eligible_items'];
-    }
-
-    /**
-     * Sets eligible_items
-     *
-     * @param \Ebay\Sell\Negotiation\Model\EligibleItem[]|null $eligible_items A list of items that are eligible for a seller-initiated offer to a buyer. Each element in the list contains the listing ID of a listed item. These IDs represent the listings for which buyers have shown an interest.
-     *
-     * @return self
-     */
-    public function setEligibleItems($eligible_items)
-    {
-        $this->container['eligible_items'] = $eligible_items;
-
-        return $this;
-    }
-
-    /**
-     * Gets href
+     * Gets currency
      *
      * @return string|null
      */
-    public function getHref()
+    public function getCurrency()
     {
-        return $this->container['href'];
+        return $this->container['currency'];
     }
 
     /**
-     * Sets href
+     * Sets currency
      *
-     * @param string|null $href The URI of the current page of results from the result set.
+     * @param string|null $currency The base currency applied to the value field to establish a monetary amount. The currency is represented as a 3-letter ISO4217 currency code. For example, the code for the Canadian Dollar is CAD. Default: The default currency of the eBay marketplace that hosts the listing. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/negotiation/types/bas:CurrencyCodeEnum'>eBay API documentation</a>
      *
      * @return self
      */
-    public function setHref($href)
+    public function setCurrency($currency)
     {
-        $this->container['href'] = $href;
+        $this->container['currency'] = $currency;
 
         return $this;
     }
 
     /**
-     * Gets limit
-     *
-     * @return int|null
-     */
-    public function getLimit()
-    {
-        return $this->container['limit'];
-    }
-
-    /**
-     * Sets limit
-     *
-     * @param int|null $limit The number of items returned on a single page from the result set. This value can be set in the request with the limit query parameter.
-     *
-     * @return self
-     */
-    public function setLimit($limit)
-    {
-        $this->container['limit'] = $limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets next
+     * Gets value
      *
      * @return string|null
      */
-    public function getNext()
+    public function getValue()
     {
-        return $this->container['next'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets next
+     * Sets value
      *
-     * @param string|null $next The URI for the following page of results. This value is returned only if there is an additional page of results to display from the result set. Max length: 2048
+     * @param string|null $value The monetary amount in the specified currency.
      *
      * @return self
      */
-    public function setNext($next)
+    public function setValue($value)
     {
-        $this->container['next'] = $next;
-
-        return $this;
-    }
-
-    /**
-     * Gets offset
-     *
-     * @return int|null
-     */
-    public function getOffset()
-    {
-        return $this->container['offset'];
-    }
-
-    /**
-     * Sets offset
-     *
-     * @param int|null $offset The number of results skipped in the result set before listing the first returned result. This value can be set in the request with the offset query parameter. Note: The items in a paginated result set use a zero-based list where the first item in the list has an offset of 0.
-     *
-     * @return self
-     */
-    public function setOffset($offset)
-    {
-        $this->container['offset'] = $offset;
-
-        return $this;
-    }
-
-    /**
-     * Gets prev
-     *
-     * @return string|null
-     */
-    public function getPrev()
-    {
-        return $this->container['prev'];
-    }
-
-    /**
-     * Sets prev
-     *
-     * @param string|null $prev The URI for the preceding page of results. This value is returned only if there is a previous page of results to display from the result set. Max length: 2048
-     *
-     * @return self
-     */
-    public function setPrev($prev)
-    {
-        $this->container['prev'] = $prev;
-
-        return $this;
-    }
-
-    /**
-     * Gets total
-     *
-     * @return int|null
-     */
-    public function getTotal()
-    {
-        return $this->container['total'];
-    }
-
-    /**
-     * Sets total
-     *
-     * @param int|null $total The total number of items retrieved in the result set. If no items match the search criteria, the server returns the HTTP status code 204 No Content.
-     *
-     * @return self
-     */
-    public function setTotal($total)
-    {
-        $this->container['total'] = $total;
+        $this->container['value'] = $value;
 
         return $this;
     }
@@ -430,7 +280,7 @@ class PagedEligibleItemCollection implements ModelInterface, ArrayAccess, \JsonS
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

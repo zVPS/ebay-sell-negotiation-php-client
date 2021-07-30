@@ -1,11 +1,11 @@
 <?php
 /**
- * Amount
+ * User
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Negotiation\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Negotiation\ObjectSerializer;
 
 /**
- * Amount Class Doc Comment
+ * User Class Doc Comment
  *
  * @category Class
- * @description A complex type that describes the value of a monetary amount as represented by a global currency.
- * @package  Ebay\Sell
+ * @description This complex type identifies an eBay user&lt;!-- by either their &lt;b&gt;maskedUsername&lt;/b&gt; or their full &lt;b&gt;username&lt;/b&gt;--&gt;.
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
+class User implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Amount';
+    protected static $openAPIModelName = 'User';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'currency' => 'string',
-        'value' => 'string'
+        'masked_username' => 'string'
     ];
 
     /**
@@ -72,8 +71,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'currency' => null,
-        'value' => null
+        'masked_username' => null
     ];
 
     /**
@@ -103,8 +101,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'currency' => 'currency',
-        'value' => 'value'
+        'masked_username' => 'maskedUsername'
     ];
 
     /**
@@ -113,8 +110,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'currency' => 'setCurrency',
-        'value' => 'setValue'
+        'masked_username' => 'setMaskedUsername'
     ];
 
     /**
@@ -123,8 +119,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'currency' => 'getCurrency',
-        'value' => 'getValue'
+        'masked_username' => 'getMaskedUsername'
     ];
 
     /**
@@ -184,8 +179,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
-        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['masked_username'] = $data['masked_username'] ?? null;
     }
 
     /**
@@ -213,49 +207,25 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets currency
+     * Gets masked_username
      *
      * @return string|null
      */
-    public function getCurrency()
+    public function getMaskedUsername()
     {
-        return $this->container['currency'];
+        return $this->container['masked_username'];
     }
 
     /**
-     * Sets currency
+     * Sets masked_username
      *
-     * @param string|null $currency The base currency applied to the value field to establish a monetary amount. The currency is represented as a 3-letter ISO4217 currency code. For example, the code for the Canadian Dollar is CAD. Default: The default currency of the eBay marketplace that hosts the listing. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/negotiation/types/bas:CurrencyCodeEnum'>eBay API documentation</a>
+     * @param string|null $masked_username The masked user name is a user name that has certain characters hidden for privacy of the user.
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setMaskedUsername($masked_username)
     {
-        $this->container['currency'] = $currency;
-
-        return $this;
-    }
-
-    /**
-     * Gets value
-     *
-     * @return string|null
-     */
-    public function getValue()
-    {
-        return $this->container['value'];
-    }
-
-    /**
-     * Sets value
-     *
-     * @param string|null $value The monetary amount in the specified currency.
-     *
-     * @return self
-     */
-    public function setValue($value)
-    {
-        $this->container['value'] = $value;
+        $this->container['masked_username'] = $masked_username;
 
         return $this;
     }
@@ -280,7 +250,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

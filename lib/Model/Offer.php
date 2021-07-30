@@ -1,11 +1,11 @@
 <?php
 /**
- * CreateOffersRequest
+ * Offer
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Negotiation\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Negotiation\ObjectSerializer;
 
 /**
- * CreateOffersRequest Class Doc Comment
+ * Offer Class Doc Comment
  *
  * @category Class
- * @description This complex type contains the fields needed to create an offer to a buyer that is initiated by the seller.
- * @package  Ebay\Sell
+ * @description A complex type that defines an offer that a seller makes to eligible buyers.
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CreateOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class Offer implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateOffersRequest';
+    protected static $openAPIModelName = 'Offer';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,9 +61,17 @@ class CreateOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'allow_counter_offer' => 'bool',
+        'buyer' => '\Ebay\Sell\Negotiation\Model\User',
+        'creation_date' => 'string',
+        'initiated_by' => 'string',
+        'last_modified_date' => 'string',
         'message' => 'string',
         'offer_duration' => '\Ebay\Sell\Negotiation\Model\TimeDuration',
-        'offered_items' => '\Ebay\Sell\Negotiation\Model\OfferedItem[]'
+        'offered_items' => '\Ebay\Sell\Negotiation\Model\OfferedItem[]',
+        'offer_id' => 'string',
+        'offer_status' => 'string',
+        'offer_type' => 'string',
+        'revision' => 'string'
     ];
 
     /**
@@ -75,9 +83,17 @@ class CreateOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'allow_counter_offer' => null,
+        'buyer' => null,
+        'creation_date' => null,
+        'initiated_by' => null,
+        'last_modified_date' => null,
         'message' => null,
         'offer_duration' => null,
-        'offered_items' => null
+        'offered_items' => null,
+        'offer_id' => null,
+        'offer_status' => null,
+        'offer_type' => null,
+        'revision' => null
     ];
 
     /**
@@ -108,9 +124,17 @@ class CreateOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'allow_counter_offer' => 'allowCounterOffer',
+        'buyer' => 'buyer',
+        'creation_date' => 'creationDate',
+        'initiated_by' => 'initiatedBy',
+        'last_modified_date' => 'lastModifiedDate',
         'message' => 'message',
         'offer_duration' => 'offerDuration',
-        'offered_items' => 'offeredItems'
+        'offered_items' => 'offeredItems',
+        'offer_id' => 'offerId',
+        'offer_status' => 'offerStatus',
+        'offer_type' => 'offerType',
+        'revision' => 'revision'
     ];
 
     /**
@@ -120,9 +144,17 @@ class CreateOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'allow_counter_offer' => 'setAllowCounterOffer',
+        'buyer' => 'setBuyer',
+        'creation_date' => 'setCreationDate',
+        'initiated_by' => 'setInitiatedBy',
+        'last_modified_date' => 'setLastModifiedDate',
         'message' => 'setMessage',
         'offer_duration' => 'setOfferDuration',
-        'offered_items' => 'setOfferedItems'
+        'offered_items' => 'setOfferedItems',
+        'offer_id' => 'setOfferId',
+        'offer_status' => 'setOfferStatus',
+        'offer_type' => 'setOfferType',
+        'revision' => 'setRevision'
     ];
 
     /**
@@ -132,9 +164,17 @@ class CreateOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'allow_counter_offer' => 'getAllowCounterOffer',
+        'buyer' => 'getBuyer',
+        'creation_date' => 'getCreationDate',
+        'initiated_by' => 'getInitiatedBy',
+        'last_modified_date' => 'getLastModifiedDate',
         'message' => 'getMessage',
         'offer_duration' => 'getOfferDuration',
-        'offered_items' => 'getOfferedItems'
+        'offered_items' => 'getOfferedItems',
+        'offer_id' => 'getOfferId',
+        'offer_status' => 'getOfferStatus',
+        'offer_type' => 'getOfferType',
+        'revision' => 'getRevision'
     ];
 
     /**
@@ -194,10 +234,18 @@ class CreateOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['allow_counter_offer'] = isset($data['allow_counter_offer']) ? $data['allow_counter_offer'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['offer_duration'] = isset($data['offer_duration']) ? $data['offer_duration'] : null;
-        $this->container['offered_items'] = isset($data['offered_items']) ? $data['offered_items'] : null;
+        $this->container['allow_counter_offer'] = $data['allow_counter_offer'] ?? null;
+        $this->container['buyer'] = $data['buyer'] ?? null;
+        $this->container['creation_date'] = $data['creation_date'] ?? null;
+        $this->container['initiated_by'] = $data['initiated_by'] ?? null;
+        $this->container['last_modified_date'] = $data['last_modified_date'] ?? null;
+        $this->container['message'] = $data['message'] ?? null;
+        $this->container['offer_duration'] = $data['offer_duration'] ?? null;
+        $this->container['offered_items'] = $data['offered_items'] ?? null;
+        $this->container['offer_id'] = $data['offer_id'] ?? null;
+        $this->container['offer_status'] = $data['offer_status'] ?? null;
+        $this->container['offer_type'] = $data['offer_type'] ?? null;
+        $this->container['revision'] = $data['revision'] ?? null;
     }
 
     /**
@@ -237,13 +285,109 @@ class CreateOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets allow_counter_offer
      *
-     * @param bool|null $allow_counter_offer If set to true, the buyer is allowed to make a counter-offer to the seller's offer. Note: Currently, you must set this field to false; counter-offers are not supported in this release. Default: false
+     * @param bool|null $allow_counter_offer If set to true, the buyer is allowed to make a counter-offer to the seller's offer.
      *
      * @return self
      */
     public function setAllowCounterOffer($allow_counter_offer)
     {
         $this->container['allow_counter_offer'] = $allow_counter_offer;
+
+        return $this;
+    }
+
+    /**
+     * Gets buyer
+     *
+     * @return \Ebay\Sell\Negotiation\Model\User|null
+     */
+    public function getBuyer()
+    {
+        return $this->container['buyer'];
+    }
+
+    /**
+     * Sets buyer
+     *
+     * @param \Ebay\Sell\Negotiation\Model\User|null $buyer buyer
+     *
+     * @return self
+     */
+    public function setBuyer($buyer)
+    {
+        $this->container['buyer'] = $buyer;
+
+        return $this;
+    }
+
+    /**
+     * Gets creation_date
+     *
+     * @return string|null
+     */
+    public function getCreationDate()
+    {
+        return $this->container['creation_date'];
+    }
+
+    /**
+     * Sets creation_date
+     *
+     * @param string|null $creation_date The date and time when the seller's offer was created. The returned timestamp is formatted as an ISO 8601 string, which is based on the 24-hour Coordinated Universal Time (UTC) clock. Format: [YYYY]-[MM]-[DD]T[hh]:[mm]:[ss].[sss]Z Example: 2018-08-20T07:09:00.000Z
+     *
+     * @return self
+     */
+    public function setCreationDate($creation_date)
+    {
+        $this->container['creation_date'] = $creation_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets initiated_by
+     *
+     * @return string|null
+     */
+    public function getInitiatedBy()
+    {
+        return $this->container['initiated_by'];
+    }
+
+    /**
+     * Sets initiated_by
+     *
+     * @param string|null $initiated_by The eBay UserName of the user (seller) who initiated the offer.
+     *
+     * @return self
+     */
+    public function setInitiatedBy($initiated_by)
+    {
+        $this->container['initiated_by'] = $initiated_by;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_modified_date
+     *
+     * @return string|null
+     */
+    public function getLastModifiedDate()
+    {
+        return $this->container['last_modified_date'];
+    }
+
+    /**
+     * Sets last_modified_date
+     *
+     * @param string|null $last_modified_date The date and time when the offer was last modified. The returned timestamp is formatted as an ISO 8601 string.
+     *
+     * @return self
+     */
+    public function setLastModifiedDate($last_modified_date)
+    {
+        $this->container['last_modified_date'] = $last_modified_date;
 
         return $this;
     }
@@ -261,7 +405,7 @@ class CreateOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets message
      *
-     * @param string|null $message A seller-defined message related to the offer being made. This message is sent to the list of &quot;interested&quot; buyers. To increase the conversion rate of the offers a seller makes to buyers, eBay recommends you always add a customized message to your offers. Maximum length: 2,000 characters
+     * @param string|null $message A seller-defined message related to the offer being made. This message is sent to the list of &quot;interested&quot; buyers along with the offer message from eBay.
      *
      * @return self
      */
@@ -309,13 +453,109 @@ class CreateOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets offered_items
      *
-     * @param \Ebay\Sell\Negotiation\Model\OfferedItem[]|null $offered_items An array of objects where each object contains the details of an offer and the ID of the listing on which the offer is being made. Note that the service does not currently support the creation of multiple offers with a single call to sendOfferToInterestedBuyer. With this, each request can target only one listing at a time and you must populate this array with a single element that contains the details of one offer.
+     * @param \Ebay\Sell\Negotiation\Model\OfferedItem[]|null $offered_items The list of items associated with the offer. Currently, the offer list is restricted to a single offer.
      *
      * @return self
      */
     public function setOfferedItems($offered_items)
     {
         $this->container['offered_items'] = $offered_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets offer_id
+     *
+     * @return string|null
+     */
+    public function getOfferId()
+    {
+        return $this->container['offer_id'];
+    }
+
+    /**
+     * Sets offer_id
+     *
+     * @param string|null $offer_id A unique eBay-assigned identifier for the offer.
+     *
+     * @return self
+     */
+    public function setOfferId($offer_id)
+    {
+        $this->container['offer_id'] = $offer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets offer_status
+     *
+     * @return string|null
+     */
+    public function getOfferStatus()
+    {
+        return $this->container['offer_status'];
+    }
+
+    /**
+     * Sets offer_status
+     *
+     * @param string|null $offer_status The current state, or status, of an offer. Status states include PENDING, COUNTERED, ACCEPTED, and DECLINED. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/negotiation/types/api:OfferStatusEnum'>eBay API documentation</a>
+     *
+     * @return self
+     */
+    public function setOfferStatus($offer_status)
+    {
+        $this->container['offer_status'] = $offer_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets offer_type
+     *
+     * @return string|null
+     */
+    public function getOfferType()
+    {
+        return $this->container['offer_type'];
+    }
+
+    /**
+     * Sets offer_type
+     *
+     * @param string|null $offer_type The type of offer being made. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/negotiation/types/api:OfferTypeEnum'>eBay API documentation</a>
+     *
+     * @return self
+     */
+    public function setOfferType($offer_type)
+    {
+        $this->container['offer_type'] = $offer_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets revision
+     *
+     * @return string|null
+     */
+    public function getRevision()
+    {
+        return $this->container['revision'];
+    }
+
+    /**
+     * Sets revision
+     *
+     * @param string|null $revision A unique, eBay-assigned ID for the revision of the offer.
+     *
+     * @return self
+     */
+    public function setRevision($revision)
+    {
+        $this->container['revision'] = $revision;
 
         return $this;
     }
@@ -340,7 +580,7 @@ class CreateOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

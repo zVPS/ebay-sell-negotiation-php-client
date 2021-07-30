@@ -1,11 +1,11 @@
 <?php
 /**
- * SendOfferToInterestedBuyersCollectionResponse
+ * OfferedItem
  *
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -29,30 +29,30 @@
 namespace Ebay\Sell\Negotiation\Model;
 
 use \ArrayAccess;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Negotiation\ObjectSerializer;
 
 /**
- * SendOfferToInterestedBuyersCollectionResponse Class Doc Comment
+ * OfferedItem Class Doc Comment
  *
  * @category Class
- * @description The response object returned from a &lt;b&gt;SendOfferToInterestedBuyers&lt;/b&gt; request.
- * @package  Ebay\Sell
+ * @description A complex type that defines the offer being made to an \&quot;interested\&quot; buyer.
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<TKey, TValue>
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SendOfferToInterestedBuyersCollectionResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class OfferedItem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SendOfferToInterestedBuyersCollectionResponse';
+    protected static $openAPIModelName = 'OfferedItem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,10 @@ class SendOfferToInterestedBuyersCollectionResponse implements ModelInterface, A
       * @var string[]
       */
     protected static $openAPITypes = [
-        'offers' => '\Ebay\Sell\Negotiation\Model\Offer[]'
+        'discount_percentage' => 'string',
+        'listing_id' => 'string',
+        'price' => '\Ebay\Sell\Negotiation\Model\Amount',
+        'quantity' => 'int'
     ];
 
     /**
@@ -71,7 +74,10 @@ class SendOfferToInterestedBuyersCollectionResponse implements ModelInterface, A
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'offers' => null
+        'discount_percentage' => null,
+        'listing_id' => null,
+        'price' => null,
+        'quantity' => null
     ];
 
     /**
@@ -101,7 +107,10 @@ class SendOfferToInterestedBuyersCollectionResponse implements ModelInterface, A
      * @var string[]
      */
     protected static $attributeMap = [
-        'offers' => 'offers'
+        'discount_percentage' => 'discountPercentage',
+        'listing_id' => 'listingId',
+        'price' => 'price',
+        'quantity' => 'quantity'
     ];
 
     /**
@@ -110,7 +119,10 @@ class SendOfferToInterestedBuyersCollectionResponse implements ModelInterface, A
      * @var string[]
      */
     protected static $setters = [
-        'offers' => 'setOffers'
+        'discount_percentage' => 'setDiscountPercentage',
+        'listing_id' => 'setListingId',
+        'price' => 'setPrice',
+        'quantity' => 'setQuantity'
     ];
 
     /**
@@ -119,7 +131,10 @@ class SendOfferToInterestedBuyersCollectionResponse implements ModelInterface, A
      * @var string[]
      */
     protected static $getters = [
-        'offers' => 'getOffers'
+        'discount_percentage' => 'getDiscountPercentage',
+        'listing_id' => 'getListingId',
+        'price' => 'getPrice',
+        'quantity' => 'getQuantity'
     ];
 
     /**
@@ -179,7 +194,10 @@ class SendOfferToInterestedBuyersCollectionResponse implements ModelInterface, A
      */
     public function __construct(array $data = null)
     {
-        $this->container['offers'] = isset($data['offers']) ? $data['offers'] : null;
+        $this->container['discount_percentage'] = $data['discount_percentage'] ?? null;
+        $this->container['listing_id'] = $data['listing_id'] ?? null;
+        $this->container['price'] = $data['price'] ?? null;
+        $this->container['quantity'] = $data['quantity'] ?? null;
     }
 
     /**
@@ -207,25 +225,97 @@ class SendOfferToInterestedBuyersCollectionResponse implements ModelInterface, A
 
 
     /**
-     * Gets offers
+     * Gets discount_percentage
      *
-     * @return \Ebay\Sell\Negotiation\Model\Offer[]|null
+     * @return string|null
      */
-    public function getOffers()
+    public function getDiscountPercentage()
     {
-        return $this->container['offers'];
+        return $this->container['discount_percentage'];
     }
 
     /**
-     * Sets offers
+     * Sets discount_percentage
      *
-     * @param \Ebay\Sell\Negotiation\Model\Offer[]|null $offers The offers container returns a list of the offers sent to buyers who have shown an interest in listings included in the offer.
+     * @param string|null $discount_percentage This value denotes the percentage that the listing in the offer will be discounted from its original listed price. The seller can specify either the exact price of the discounted items with the price field or they can use this field to specify the percentage that the listing will be discounted, but not both. Minimum: 5 Required if you do not specify a price value.
      *
      * @return self
      */
-    public function setOffers($offers)
+    public function setDiscountPercentage($discount_percentage)
     {
-        $this->container['offers'] = $offers;
+        $this->container['discount_percentage'] = $discount_percentage;
+
+        return $this;
+    }
+
+    /**
+     * Gets listing_id
+     *
+     * @return string|null
+     */
+    public function getListingId()
+    {
+        return $this->container['listing_id'];
+    }
+
+    /**
+     * Sets listing_id
+     *
+     * @param string|null $listing_id This value is a unique eBay-assigned ID that identifies the listing to which the offer pertains. A listingId value is generated by eBay when you list an item with the Trading API.
+     *
+     * @return self
+     */
+    public function setListingId($listing_id)
+    {
+        $this->container['listing_id'] = $listing_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets price
+     *
+     * @return \Ebay\Sell\Negotiation\Model\Amount|null
+     */
+    public function getPrice()
+    {
+        return $this->container['price'];
+    }
+
+    /**
+     * Sets price
+     *
+     * @param \Ebay\Sell\Negotiation\Model\Amount|null $price price
+     *
+     * @return self
+     */
+    public function setPrice($price)
+    {
+        $this->container['price'] = $price;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantity
+     *
+     * @return int|null
+     */
+    public function getQuantity()
+    {
+        return $this->container['quantity'];
+    }
+
+    /**
+     * Sets quantity
+     *
+     * @param int|null $quantity This integer value indicates the number of items in the eBay listing for which the offer is being made. The offer being made by the seller is an &quot;all or nothing&quot; offer, meaning the buyer must purchase the indicated quantity of items in order to receive the discount on the transaction. Default: 1
+     *
+     * @return self
+     */
+    public function setQuantity($quantity)
+    {
+        $this->container['quantity'] = $quantity;
 
         return $this;
     }
@@ -250,7 +340,7 @@ class SendOfferToInterestedBuyersCollectionResponse implements ModelInterface, A
      */
     public function offsetGet($offset)
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**

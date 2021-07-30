@@ -4,7 +4,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -32,7 +32,7 @@ namespace Ebay\Sell\Negotiation;
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -383,7 +383,7 @@ class Configuration
      *
      * @return void
      */
-    public static function setDefaultConfiguration($config)
+    public static function setDefaultConfiguration(Configuration $config)
     {
         self::$defaultConfiguration = $config;
     }
@@ -395,7 +395,7 @@ class Configuration
      */
     public static function toDebugReport()
     {
-        $report  = 'PHP SDK (Ebay\Sell) Debug Report:' . PHP_EOL;
+        $report  = 'PHP SDK (Ebay\Sell\Negotiation) Debug Report:' . PHP_EOL;
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    The version of the OpenAPI document: v1.1.0' . PHP_EOL;
@@ -469,7 +469,7 @@ class Configuration
         $url = $host["url"];
 
         // go through variable and assign a value
-        foreach (isset($host["variables"]) ? $host["variables"] : [] as $name => $variable) {
+        foreach ($host["variables"] ?? [] as $name => $variable) {
             if (array_key_exists($name, $variables)) { // check to see if it's in the variables provided by the user
                 if (in_array($variables[$name], $variable["enum_values"], true)) { // check to see if the value is in the enum
                     $url = str_replace("{".$name."}", $variables[$name], $url);

@@ -4,7 +4,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,7 +25,7 @@
  * Do not edit the class manually.
  */
 
-namespace Ebay\Sell\Negotiation;
+namespace Ebay\Sell\Negotiation\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -33,16 +33,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Ebay\Sell\ApiException;
-use Ebay\Sell\Configuration;
-use Ebay\Sell\HeaderSelector;
-use Ebay\Sell\ObjectSerializer;
+use Ebay\Sell\Negotiation\ApiException;
+use Ebay\Sell\Negotiation\Configuration;
+use Ebay\Sell\Negotiation\HeaderSelector;
+use Ebay\Sell\Negotiation\ObjectSerializer;
 
 /**
  * OfferApi Class Doc Comment
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -90,9 +90,8 @@ class OfferApi
      * Set the host index
      *
      * @param int $hostIndex Host index (required)
-     * @return void
      */
-    public function setHostIndex($hostIndex)
+    public function setHostIndex($hostIndex): void
     {
         $this->hostIndex = $hostIndex;
     }
@@ -122,7 +121,7 @@ class OfferApi
      * @param  int $limit This query parameter specifies the maximum number of items to return from the result set on a page in the paginated response. Minimum: 1 &amp;nbsp; &amp;nbsp;Maximum: 200 Default: 10 (optional)
      * @param  int $offset This query parameter specifies the number of results to skip in the result set before returning the first result in the paginated response. Combine offset with the limit query parameter to control the items returned in the response. For example, if you supply an offset of 0 and a limit of 10, the first page of the response contains the first 10 results from the complete list of items retrieved by the call. If offset is 10 and limit is 20, the first page of the response contains items 11-30 from the complete result set. Default: 0 (optional)
      *
-     * @throws \Ebay\Sell\ApiException on non-2xx response
+     * @throws \Ebay\Sell\Negotiation\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Ebay\Sell\Negotiation\Model\PagedEligibleItemCollection
      */
@@ -139,7 +138,7 @@ class OfferApi
      * @param  int $limit This query parameter specifies the maximum number of items to return from the result set on a page in the paginated response. Minimum: 1 &amp;nbsp; &amp;nbsp;Maximum: 200 Default: 10 (optional)
      * @param  int $offset This query parameter specifies the number of results to skip in the result set before returning the first result in the paginated response. Combine offset with the limit query parameter to control the items returned in the response. For example, if you supply an offset of 0 and a limit of 10, the first page of the response contains the first 10 results from the complete list of items retrieved by the call. If offset is 10 and limit is 20, the first page of the response contains items 11-30 from the complete result set. Default: 0 (optional)
      *
-     * @throws \Ebay\Sell\ApiException on non-2xx response
+     * @throws \Ebay\Sell\Negotiation\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Ebay\Sell\Negotiation\Model\PagedEligibleItemCollection, HTTP status code, HTTP response headers (array of strings)
      */
@@ -401,7 +400,7 @@ class OfferApi
      * @param  string $x_ebay_c_marketplace_id The eBay marketplace on which your listings with &amp;quot;eligible&amp;quot; buyers appear. For a complete list of supported marketplaces, see Negotiation API requirements and restrictions. (required)
      * @param  \Ebay\Sell\Negotiation\Model\CreateOffersRequest $body Send offer to eligible items request. (optional)
      *
-     * @throws \Ebay\Sell\ApiException on non-2xx response
+     * @throws \Ebay\Sell\Negotiation\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Ebay\Sell\Negotiation\Model\SendOfferToInterestedBuyersCollectionResponse
      */
@@ -417,7 +416,7 @@ class OfferApi
      * @param  string $x_ebay_c_marketplace_id The eBay marketplace on which your listings with &amp;quot;eligible&amp;quot; buyers appear. For a complete list of supported marketplaces, see Negotiation API requirements and restrictions. (required)
      * @param  \Ebay\Sell\Negotiation\Model\CreateOffersRequest $body Send offer to eligible items request. (optional)
      *
-     * @throws \Ebay\Sell\ApiException on non-2xx response
+     * @throws \Ebay\Sell\Negotiation\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Ebay\Sell\Negotiation\Model\SendOfferToInterestedBuyersCollectionResponse, HTTP status code, HTTP response headers (array of strings)
      */

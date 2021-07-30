@@ -4,7 +4,7 @@
  * PHP version 7.2
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,18 +25,18 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace Ebay\Sell\Test\Api;
+namespace Ebay\Sell\Negotiation\Test\Api;
 
-use \Ebay\Sell\Configuration;
-use \Ebay\Sell\ApiException;
-use \Ebay\Sell\ObjectSerializer;
+use \Ebay\Sell\Negotiation\Configuration;
+use \Ebay\Sell\Negotiation\ApiException;
+use \Ebay\Sell\Negotiation\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
  * OfferApiTest Class Doc Comment
  *
  * @category Class
- * @package  Ebay\Sell
+ * @package  Ebay\Sell\Negotiation
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
