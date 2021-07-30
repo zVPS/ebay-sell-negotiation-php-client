@@ -45,7 +45,7 @@ use \Ebay\Sell\Negotiation\ObjectSerializer;
  */
 class CreateOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -194,10 +194,10 @@ class CreateOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['allow_counter_offer'] = $data['allow_counter_offer'] ?? null;
-        $this->container['message'] = $data['message'] ?? null;
-        $this->container['offer_duration'] = $data['offer_duration'] ?? null;
-        $this->container['offered_items'] = $data['offered_items'] ?? null;
+        $this->container['allow_counter_offer'] = isset($data['allow_counter_offer']) ? $data['allow_counter_offer'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['offer_duration'] = isset($data['offer_duration']) ? $data['offer_duration'] : null;
+        $this->container['offered_items'] = isset($data['offered_items']) ? $data['offered_items'] : null;
     }
 
     /**
@@ -340,7 +340,7 @@ class CreateOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

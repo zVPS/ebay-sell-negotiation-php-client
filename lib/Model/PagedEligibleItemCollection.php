@@ -45,7 +45,7 @@ use \Ebay\Sell\Negotiation\ObjectSerializer;
  */
 class PagedEligibleItemCollection implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -209,13 +209,13 @@ class PagedEligibleItemCollection implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['eligible_items'] = $data['eligible_items'] ?? null;
-        $this->container['href'] = $data['href'] ?? null;
-        $this->container['limit'] = $data['limit'] ?? null;
-        $this->container['next'] = $data['next'] ?? null;
-        $this->container['offset'] = $data['offset'] ?? null;
-        $this->container['prev'] = $data['prev'] ?? null;
-        $this->container['total'] = $data['total'] ?? null;
+        $this->container['eligible_items'] = isset($data['eligible_items']) ? $data['eligible_items'] : null;
+        $this->container['href'] = isset($data['href']) ? $data['href'] : null;
+        $this->container['limit'] = isset($data['limit']) ? $data['limit'] : null;
+        $this->container['next'] = isset($data['next']) ? $data['next'] : null;
+        $this->container['offset'] = isset($data['offset']) ? $data['offset'] : null;
+        $this->container['prev'] = isset($data['prev']) ? $data['prev'] : null;
+        $this->container['total'] = isset($data['total']) ? $data['total'] : null;
     }
 
     /**
@@ -430,7 +430,7 @@ class PagedEligibleItemCollection implements ModelInterface, ArrayAccess, \JsonS
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -45,7 +45,7 @@ use \Ebay\Sell\Negotiation\ObjectSerializer;
  */
 class Offer implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -234,18 +234,18 @@ class Offer implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['allow_counter_offer'] = $data['allow_counter_offer'] ?? null;
-        $this->container['buyer'] = $data['buyer'] ?? null;
-        $this->container['creation_date'] = $data['creation_date'] ?? null;
-        $this->container['initiated_by'] = $data['initiated_by'] ?? null;
-        $this->container['last_modified_date'] = $data['last_modified_date'] ?? null;
-        $this->container['message'] = $data['message'] ?? null;
-        $this->container['offer_duration'] = $data['offer_duration'] ?? null;
-        $this->container['offered_items'] = $data['offered_items'] ?? null;
-        $this->container['offer_id'] = $data['offer_id'] ?? null;
-        $this->container['offer_status'] = $data['offer_status'] ?? null;
-        $this->container['offer_type'] = $data['offer_type'] ?? null;
-        $this->container['revision'] = $data['revision'] ?? null;
+        $this->container['allow_counter_offer'] = isset($data['allow_counter_offer']) ? $data['allow_counter_offer'] : null;
+        $this->container['buyer'] = isset($data['buyer']) ? $data['buyer'] : null;
+        $this->container['creation_date'] = isset($data['creation_date']) ? $data['creation_date'] : null;
+        $this->container['initiated_by'] = isset($data['initiated_by']) ? $data['initiated_by'] : null;
+        $this->container['last_modified_date'] = isset($data['last_modified_date']) ? $data['last_modified_date'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['offer_duration'] = isset($data['offer_duration']) ? $data['offer_duration'] : null;
+        $this->container['offered_items'] = isset($data['offered_items']) ? $data['offered_items'] : null;
+        $this->container['offer_id'] = isset($data['offer_id']) ? $data['offer_id'] : null;
+        $this->container['offer_status'] = isset($data['offer_status']) ? $data['offer_status'] : null;
+        $this->container['offer_type'] = isset($data['offer_type']) ? $data['offer_type'] : null;
+        $this->container['revision'] = isset($data['revision']) ? $data['revision'] : null;
     }
 
     /**
@@ -580,7 +580,7 @@ class Offer implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -45,7 +45,7 @@ use \Ebay\Sell\Negotiation\ObjectSerializer;
  */
 class OfferedItem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -194,10 +194,10 @@ class OfferedItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['discount_percentage'] = $data['discount_percentage'] ?? null;
-        $this->container['listing_id'] = $data['listing_id'] ?? null;
-        $this->container['price'] = $data['price'] ?? null;
-        $this->container['quantity'] = $data['quantity'] ?? null;
+        $this->container['discount_percentage'] = isset($data['discount_percentage']) ? $data['discount_percentage'] : null;
+        $this->container['listing_id'] = isset($data['listing_id']) ? $data['listing_id'] : null;
+        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        $this->container['quantity'] = isset($data['quantity']) ? $data['quantity'] : null;
     }
 
     /**
@@ -340,7 +340,7 @@ class OfferedItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

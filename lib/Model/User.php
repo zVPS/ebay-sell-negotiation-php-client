@@ -45,7 +45,7 @@ use \Ebay\Sell\Negotiation\ObjectSerializer;
  */
 class User implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -179,7 +179,7 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['masked_username'] = $data['masked_username'] ?? null;
+        $this->container['masked_username'] = isset($data['masked_username']) ? $data['masked_username'] : null;
     }
 
     /**
@@ -250,7 +250,7 @@ class User implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**
